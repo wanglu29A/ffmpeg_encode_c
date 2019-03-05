@@ -85,6 +85,10 @@ int main() {
     {
         //ret = avcodec_decode_audio4(pCodeCtx, frame, &got_frame, packet);
         ret = avcodec_send_packet(pCodeCtx, packet);
+        if(ret < 0)
+        {
+            printf("解码完成\n");
+        }
         ret = avcodec_receive_frame(pCodeCtx, frame);
         if(ret < 0)
         {
